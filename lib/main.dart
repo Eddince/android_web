@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter/foundation.dart' show kIsWeb; //para la parte web
+
 void main() {
   runApp(const MyApp());
 }
@@ -53,6 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Botón Test 1'),
             ),
             const SizedBox(height: 10),
+            // Modifica los botones para mostrar comportamiento diferente en web si es necesario
+             ElevatedButton(
+               onPressed: () {
+                setState(() {
+               _buttonStatus = 'Botón 1 presionado';
+                            });
+               if (kIsWeb) {
+               // Comportamiento específico para web
+                 print('Acción en web');
+                  }
+                   },
+                    child: const Text('Botón Test 1'),
+                           ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
